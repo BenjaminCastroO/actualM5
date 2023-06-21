@@ -13,13 +13,16 @@
           <a class="nav-link active" aria-current="page" href="<%=request.getContextPath()%>/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<%=request.getContextPath()%>/students">Cliente</a>
+          <a class="nav-link" href="<%=request.getContextPath()%>//creaCapacitacion">Cliente</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<%=request.getContextPath()%>/teachers">Administrativo</a>
+          <a class="nav-link" href="<%=request.getContextPath()%>/admin">Administrativo</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<%=request.getContextPath()%>/teachers">Profesional</a>
+          <a class="nav-link" href="<%=request.getContextPath()%>/profesional">Profesional</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%=request.getContextPath()%>/contacto">Contacto</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<%=request.getContextPath()%>/login">Login</a>
