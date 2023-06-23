@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 @WebServlet("/contacto")
-public class Contacto extends HttpServlet {
+public class ContactoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      
     public void Contacto() {

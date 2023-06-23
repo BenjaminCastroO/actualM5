@@ -21,22 +21,12 @@ private List<Capacitacion> capacitacionList = new ArrayList<Capacitacion>();
 		return capacitacionList;	
 	}
 	
-	public Capacitacion findOne(int id) {
-		/*for(int i = 0; i < studentsList.size(); i++) {
-			Student student = studentsList.get(i);
-			if (student.getId() == id) {
-				return student;
-			}
-		}
-		return null;*/
-		
-		return capacitacionList.stream().filter(s -> s.getId() == id).findFirst().orElse(null);
-		
+	public Capacitacion findOne(int id) {	
+		return capacitacionList.stream().filter(s -> s.getId() == id).findFirst().orElse(null);	
 	}
 	
 	public boolean save(int id, int rut, String dia, String hora, String lugar,
-            int duracion, int cantAsistentes) {
-		
+            int duracion, int cantAsistentes) {	
 		Capacitacion capacitacion = findOne(id);
 		capacitacion.setRut(rut);
 		capacitacion.setDia(dia);
@@ -44,9 +34,6 @@ private List<Capacitacion> capacitacionList = new ArrayList<Capacitacion>();
 		capacitacion.setLugar(lugar);
 		capacitacion.setDuracion(duracion);
 		capacitacion.setCantAsistentes(cantAsistentes);
-		
-		
-		return true;
-		
+		return true;	
 	}
 }

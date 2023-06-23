@@ -26,7 +26,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="CreaCapacitacion" items="${CapacitacionService.findAll()}">
+			<c:forEach var="capacitacion" items="${listaCapacitaciones}">
 				<tr>
 					<td><c:out value="${capacitacion.getId()}"/></td>
 					<td><c:out value="${capacitacion.getRut()}"></c:out></td>

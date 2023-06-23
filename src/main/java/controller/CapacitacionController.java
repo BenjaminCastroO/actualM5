@@ -14,14 +14,14 @@ import service.CapacitacionService;
 
 
 @WebServlet("/creaCapacitacion")
-public class CreaCapacitacion extends HttpServlet {
+public class CapacitacionController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private CapacitacionService capacitacionService;
 	
        
 
-    public CreaCapacitacion() {
+    public CapacitacionController() {
         super();
         capacitacionService = new CapacitacionService();
     }
@@ -45,8 +45,10 @@ public class CreaCapacitacion extends HttpServlet {
         
         Capacitacion capacitacion = new Capacitacion(id, rut, dia, hora, lugar, duracion, cantAsistentes);
         capacitacionService.agregarCapacitacion(capacitacion);
-        
-        request.setAttribute("creaCapacitacion", capacitacionService.findAll());
+        for (int i = 0; i < capacitacionService.findAll().size(); i++) {
+        	System.out.println(capacitacionService.findOne(i));
+        }
+        request.setAttribute("listaCapacitaciones", capacitacionService.findAll());
 		getServletContext().getRequestDispatcher("/views/capacitacionList.jsp").forward(request, response);
 	}
 

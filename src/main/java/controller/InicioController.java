@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/")
-public class Inicio extends HttpServlet {
+public class InicioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public Inicio() {
+    public InicioController() {
         super();
     }
 
