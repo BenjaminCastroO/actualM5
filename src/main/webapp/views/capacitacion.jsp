@@ -57,8 +57,8 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="cantidad">Cantidad de Asistentes:</label>
-						<input class="form-control" type="number"  id="cantAsistentes" name="cantidad">
+					<label class="form-label" for="cantAsistentes">Cantidad de Asistentes:</label>
+						<input class="form-control" type="number"  id="cantAsistentes" name="cantAsistentes">
 				</div>
 			</div>	
 			<div class="row pt-4">

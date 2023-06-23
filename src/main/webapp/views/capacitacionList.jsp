@@ -26,15 +26,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="student" items="${capacitacion}">
+			<c:forEach var="CreaCapacitacion" items="${CapacitacionService.findAll()}">
 				<tr>
 					<td><c:out value="${capacitacion.getId()}"/></td>
 					<td><c:out value="${capacitacion.getRut()}"></c:out></td>
-					<td>
-						<a href="${pageContext.request.contextPath}/students?a=read&id=${capacitacion.getId()}"><i class="fa-solid fa-book-open"></i></a>
-						<a href="${pageContext.request.contextPath}/students?a=edit&id=${capacitacion.getId()}"><i class="fa-solid fa-pen-to-square"></i></a>
-						<a href="${pageContext.request.contextPath}/students?a=delete&id=${capacitacion.getId()}"><i class="fa-solid fa-trash-can"></i></a>
-					</td>
 				</tr>
 			</c:forEach>
 		</tbody>

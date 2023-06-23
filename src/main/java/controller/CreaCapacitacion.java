@@ -34,7 +34,8 @@ public class CreaCapacitacion extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int id = Integer.parseInt(request.getParameter("id"));
+
+		int id = Integer.parseInt(request.getParameter("idcap"));
         int rut = Integer.parseInt(request.getParameter("rut"));
         String dia = request.getParameter(request.getParameter("dia"));
         String hora = request.getParameter("hora");
@@ -44,6 +45,9 @@ public class CreaCapacitacion extends HttpServlet {
         
         Capacitacion capacitacion = new Capacitacion(id, rut, dia, hora, lugar, duracion, cantAsistentes);
         capacitacionService.agregarCapacitacion(capacitacion);
+        
+        request.setAttribute("creaCapacitacion", capacitacionService.findAll());
+		getServletContext().getRequestDispatcher("/views/capacitacionList.jsp").forward(request, response);
 	}
 
 }

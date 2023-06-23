@@ -13,7 +13,7 @@
           <a class="nav-link active" aria-current="page" href="<%=request.getContextPath()%>/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<%=request.getContextPath()%>//creaCapacitacion">Cliente</a>
+          <a class="nav-link" href="<%=request.getContextPath()%>/creaCapacitacion">Cliente</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<%=request.getContextPath()%>/admin">Administrativo</a>
