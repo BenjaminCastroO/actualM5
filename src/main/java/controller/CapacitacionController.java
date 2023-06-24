@@ -1,5 +1,6 @@
 package controller;
 import java.util.*;
+import java.util.Objects;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +14,7 @@ import service.CapacitacionService;
 //import cl.awakelab.models.service.StudentService;
 
 
-@WebServlet("/creaCapacitacion")
+@WebServlet("/capacitacion")
 public class CapacitacionController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -28,12 +29,21 @@ public class CapacitacionController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/views/capacitacion.jsp").forward(request, response);
+		
+		String opcion = "";
+		opcion = request.getParameter("btnMostrar");
+	
+			if (!(Objects.isNull(opcion))) {
+				if (opcion.equals("1")) {
+				request.setAttribute("listaCapacitaciones", capacitacionService.findAll());
+				getServletContext().getRequestDispatcher("/views/capacitacionList.jsp").forward(request, response);
+				}
+			} else {
+		getServletContext().getRequestDispatcher("/views/capacitacion.jsp").forward(request, response);}
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 
 		int id = Integer.parseInt(request.getParameter("idcap"));
         int rut = Integer.parseInt(request.getParameter("rut"));
@@ -45,9 +55,6 @@ public class CapacitacionController extends HttpServlet {
         
         Capacitacion capacitacion = new Capacitacion(id, rut, dia, hora, lugar, duracion, cantAsistentes);
         capacitacionService.agregarCapacitacion(capacitacion);
-        for (int i = 0; i < capacitacionService.findAll().size(); i++) {
-        	System.out.println(capacitacionService.findOne(i));
-        }
         request.setAttribute("listaCapacitaciones", capacitacionService.findAll());
 		getServletContext().getRequestDispatcher("/views/capacitacionList.jsp").forward(request, response);
 	}

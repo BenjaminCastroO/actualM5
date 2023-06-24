@@ -13,11 +13,17 @@
 <div class="container">
 	<jsp:include page="./header.jsp"></jsp:include>
 
+	<div class="col pt-4">
+		<form class="form " action="capacitacion" method="GET">
+			<button class="btn btn-primary" id="btnMostrar" name="btnMostrar" type="submit" value="1">Mostrar capacitaciones</button>
+		</form>	
+	</div>
+
 	<div class="container">
 		<h2>Crear Capacitaciones</h2>	
 	</div>
 	<div class="container">
-		<form class="form" action="creaCapacitacion" method="POST">
+		<form class="form" action="capacitacion" method="POST">
 			<div class="row">
 				<div class="col">
 					<label class="form-label" for="idcap">Id Capacitacion:</label>			
@@ -63,7 +69,7 @@
 			</div>	
 			<div class="row pt-4">
 				<div class="col">
-					<a href="${pageContext.request.contextPath}/views/capacitacionList.jsp" class="btn btn-secondary">Volver</a>
+					<a href="${pageContext.request.contextPath}/" class="btn btn-secondary">Volver</a>
 				</div>
 				<div class="col">
 						<button type="submit" class="btn btn-primary">Guardar</button>
