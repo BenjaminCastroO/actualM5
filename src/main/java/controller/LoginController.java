@@ -36,14 +36,13 @@ public class LoginController extends HttpServlet {
 		
 		if (loginService.login(username, password)) {	
 			session.setAttribute("isLogged", true);
-			
-			getServletContext().getRequestDispatcher("/capacitacion").forward(request, response);	
+			System.out.println("acá no está el problema");
+			getServletContext().getRequestDispatcher("/").forward(request, response);	
 		} else {
-			
 			session.setAttribute("isLogged", false);
 			getServletContext().getRequestDispatcher("/views/login.jsp").forward(request, response);
-			
 		}
+		
      }
 		
 

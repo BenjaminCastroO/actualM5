@@ -53,7 +53,13 @@ public class CapacitacionController extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		//solución al problema: para evitar que al redireccionar desde login a capacitacion se llame al post de capacitacion controller se verifica
+		// que el request tenga el parametro idcap distinto de null ya que el codigo del metodo post está reservado para el uso del formulario de creación
+		// de una capacitación.
+		if((Objects.isNull(request.getParameter("idcap")))) {
+			getServletContext().getRequestDispatcher("/views/capacitacion.jsp").forward(request, response);
+		}
+		
 		int id = Integer.parseInt(request.getParameter("idcap"));
         int rut = Integer.parseInt(request.getParameter("rut"));
         String dia = request.getParameter(request.getParameter("dia"));
