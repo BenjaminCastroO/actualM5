@@ -7,28 +7,37 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dto.Capacitacion;
 import service.CapacitacionService;
-
-//import cl.awakelab.models.service.StudentService;
 
 
 @WebServlet("/capacitacion")
 public class CapacitacionController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private CapacitacionService capacitacionService;
-	
-       
+	CapacitacionService capacitacionService = new CapacitacionService();;
+	      
 
     public CapacitacionController() {
         super();
-        capacitacionService = new CapacitacionService();
-    }
+        }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("isLogged") == null) {
+			getServletContext().getRequestDispatcher("/login").forward(request, response);
+		}
+		
+		boolean isLogged = (boolean)session.getAttribute("isLogged");
+		
+		if (!isLogged) {
+			getServletContext().getRequestDispatcher("/login").forward(request, response);
+		} 		
 		
 		String opcion = "";
 		opcion = request.getParameter("btnMostrar");

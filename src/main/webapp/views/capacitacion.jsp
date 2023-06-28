@@ -27,7 +27,7 @@
 			<div class="row">
 				<div class="col">
 					<label class="form-label" for="idcap">Id Capacitacion:</label>			
-						<input class="form-control" type="number"  id="id" name="idcap">			
+						<input class="form-control" type="number"  id="idcap" name="idcap">			
 				</div>
 			</div>
 			<div class="row">
