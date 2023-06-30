@@ -14,22 +14,30 @@
 <div class="container">
 	<jsp:include page="./header.jsp"></jsp:include>
 
-	<div class="container">
-		<h2>Lista de Capacitaciones</h2>	
+	<div class="container ">
+		<h2>Lista de Capacitaciones</h2>
+		<a href="${pageContext.request.contextPath}/capacitacion?op=create"><button class="btn btn-dark">Crear capacitación</button></a>	
 	</div>
-	<table class="table">
-		<thead class="table-dark">
+	<div class = "col pt-4"></div>
+	<table class="table pt-4">
+		<thead class="table-dark pt-4">
 			<tr>
 				<th>Id Capacitacion</th>
-				<th>RUT</th>
-				<th></th>
+				<th>Nombre</th>
+				<th>Detalle</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="capacitacion" items="${listaCapacitaciones}">
 				<tr>
 					<td><c:out value="${capacitacion.getId()}"/></td>
-					<td><c:out value="${capacitacion.getRut()}"></c:out></td>
+					<td><c:out value="${capacitacion.getNombre()}"/></td>
+					<td><c:out value="${capacitacion.getDetalle()}"></c:out></td>
+					<td>
+						<a href="${pageContext.request.contextPath}/capacitacion?id=${capacitacion.getId()}&op=read"><i class="fa-solid fa-eye"></i></a>
+						<a href="${pageContext.request.contextPath}/capacitacion?id=${capacitacion.getId()}&op=edit"><i class="fa-solid fa-pen-to-square"></i></a>
+						<a href="${pageContext.request.contextPath}/capacitacion?id=${capacitacion.getId()}&op=delete"><i class="fa-solid fa-trash"></i></a>
+					</td>				
 				</tr>
 			</c:forEach>
 		</tbody>

@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>Bienvenidos - Capacitaciones</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-
 </head>
 <body>
 <div class="container">
@@ -25,48 +24,20 @@
 	<div class="container">
 		<form class="form" action="capacitacion" method="POST">
 			<div class="row">
+			</div>
+			<div class="row">
 				<div class="col">
-					<label class="form-label" for="idcap">Id Capacitacion:</label>			
-						<input class="form-control" type="number"  id="idcap" name="idcap">			
+					<label class="form-label" for="rut">Nombre:</label>
+						<input class="form-control" type="text"  id="nombre" name="nombre">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="rut">Rut:</label>
-						<input class="form-control" type="number"  id="rut" name="rut">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<label class="form-label" for="dia">Día:</label>
-						<input class="form-control" type="date"  id="dia" name="dia">	
+					<label class="form-label" for="dia">Detalle:</label>
+						<input class="form-control" type="text"  id="detalle" name="detalle">	
 				</div>
 			</div>		
-			<div class="row">
-				<div class="col">
-					<label class="form-label" for="hora">Hora:</label>
-						<input class="form-control" type="text"  id="hora" name="hora">
-				</div>
-			</div>	
 			
-			<div class="row">
-				<div class="col">
-					<label class="form-label" for="lugar">Lugar:</label>
-						<input class="form-control" type="text"  id="lugar" name="lugar">
-				</div>
-			</div>	
-			<div class="row">
-				<div class="col">
-					<label class="form-label" for="duracion">Duracion:</label>
-						<input class="form-control" type="number"  id="duracion" name="duracion">	
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<label class="form-label" for="cantAsistentes">Cantidad de Asistentes:</label>
-						<input class="form-control" type="number"  id="cantAsistentes" name="cantAsistentes">
-				</div>
-			</div>	
 			<div class="row pt-4">
 				<div class="col">
 					<a href="${pageContext.request.contextPath}/" class="btn btn-secondary">Volver</a>
