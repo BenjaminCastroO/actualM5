@@ -3,18 +3,17 @@ package model.dto;
 public class Usuario {
 	
 	private int id;
-	private String name;
-	private String tipo;
+	private String nombre;
+	private String username;
+	private String password;
 	
-	public Usuario() {
-		super();
-	}
+	public Usuario() {}
 
-	public Usuario(int id, String name, String tipo) {
-		super();
+	public Usuario(int id, String nombre, String username, String password) {
 		this.id = id;
-		this.name = name;
-		this.tipo = tipo;
+		this.nombre = nombre;
+		this.username = username;
+		this.password = password;
 	}
 
 	public int getId() {
@@ -25,21 +24,34 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
+	public String getPassword() {
+		return password;
+	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", username=" + username + ", password=" + password + "]";
+	}
+
+	
 }

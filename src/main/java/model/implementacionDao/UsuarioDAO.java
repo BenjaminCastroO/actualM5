@@ -15,7 +15,8 @@ public class UsuarioDAO implements IUsuarioDAO{
 	@Override
 	public void create(Usuario u) {
 		
-		String sql = "insert into usuarios (nombre, tipo) values ('" + u.getName() + "', '" + u.getTipo() + "')";
+		String sql = "insert into usuario (nombre, username, password) values ('" +
+		u.getNombre() + "', '" + u.getUsername() + "', '" + u.getPassword() + "')";
 		
 		try {
 			java.sql.Connection connection = Conexion.getConexion();
@@ -34,10 +35,10 @@ public class UsuarioDAO implements IUsuarioDAO{
 			try {
 				java.sql.Connection connection = Conexion.getConexion();
 				Statement statement = connection.createStatement();
-				String sql = "select id, nombre, tipo from usuarios";
+				String sql = "select id, nombre, username, password from usuario";
 				ResultSet result = statement.executeQuery(sql);
 				while (result.next()) {
-					list.add(mappingCapacitacion(result));
+					list.add(mappingUsuario(result));
 				}
 			} catch (SQLException e) {
 				System.out.println("Error en read()");
@@ -46,8 +47,8 @@ public class UsuarioDAO implements IUsuarioDAO{
 			return list;
 	}
 
-	private Usuario mappingCapacitacion(ResultSet result) throws SQLException {
-		Usuario u = new Usuario(result.getInt("id"), result.getString("nombre"), result.getString("tipo"));
+	private Usuario mappingUsuario(ResultSet result) throws SQLException {
+		Usuario u = new Usuario(result.getInt("id"), result.getString("nombre"), result.getString("username"),result.getString("password"));
 		return u;
 	}
 
@@ -57,9 +58,9 @@ public class UsuarioDAO implements IUsuarioDAO{
 		try {
 			java.sql.Connection connection = Conexion.getConexion();
 			Statement statement = connection.createStatement();
-			String sql = "select id, nombre, tipo from usuarios where id = " + id;
+			String sql = "select id, nombre, username, password from usuario where id = " + id;
 			ResultSet result = statement.executeQuery(sql);
-			u = mappingCapacitacion(result);
+			u = mappingUsuario(result);
 			} catch (SQLException e) {
 			System.out.println("Error en read(id)");
 			e.printStackTrace();
