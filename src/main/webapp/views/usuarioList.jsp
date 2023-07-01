@@ -16,7 +16,16 @@
 
 	<div class="container ">
 		<h2>Lista de Usuarios</h2>
-		<a href="${pageContext.request.contextPath}/usuario?op=create"><button class="btn btn-dark">Crear usuario</button></a>	
+		<div class="dropdown">
+			<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  			  Crear Usuario
+ 			</button>
+  			<ul class="dropdown-menu">
+   				<li><a class="dropdown-item" href="${pageContext.request.contextPath}/usuario?op=createAdministrativo">Administrativo</a></li>
+    			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/usuario?op=createCliente">Cliente</a></li>
+    			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/usuario?op=createProfesional">Profesional</a></li>
+ 			</ul>
+		</div>
 	</div>
 	<div class = "col pt-4"></div>
 	<table class="table pt-4">
