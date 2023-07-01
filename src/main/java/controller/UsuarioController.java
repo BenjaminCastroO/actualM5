@@ -40,8 +40,14 @@ UsuarioService usuarioService = new UsuarioService();
 		} 		
 		String op = request.getParameter("op");
 		if(op != null) {
-			if (op.equals("create")) {
-				getServletContext().getRequestDispatcher("/views/usuario.jsp").forward(request, response);
+			if (op.equals("createAdministrativo")) {
+				getServletContext().getRequestDispatcher("/views/usuarioAdministrativo.jsp").forward(request, response);
+			}
+			if (op.equals("createCliente")) {
+				getServletContext().getRequestDispatcher("/views/usuarioCliente.jsp").forward(request, response);
+			}
+			if (op.equals("createProfesional")) {
+				getServletContext().getRequestDispatcher("/views/usuarioProfesional.jsp").forward(request, response);
 			}
 		}
 		request.setAttribute("listaUsuarios", usuarioService.findAll());
