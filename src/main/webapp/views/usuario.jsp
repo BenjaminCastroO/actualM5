@@ -27,14 +27,20 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="rut">Nombre:</label>
+					<label class="form-label" for="nombre">Nombre:</label>
 						<input class="form-control" type="text"  id="nombre" name="nombre">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="dia">Tipo:</label>
-						<input class="form-control" type="text"  id="tipo" name="tipo">	
+					<label class="form-label" for="tipo">Tipo:</label>
+					<select class="form-select" id="tipo" name="tipo" aria-label="Default select example">
+  						<option  disabled selected>Selecionar Tipo</option>
+  						<option  value="Administrativo">Administrativo</option>
+  						<option  value="Cliente">Cliente</option>
+  						<option  value="Profesional">Profesional</option>
+					</select>
+					
 				</div>
 			</div>		
 			
