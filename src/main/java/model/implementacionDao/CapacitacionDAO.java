@@ -1,4 +1,4 @@
-package model.dao;
+package model.implementacionDao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,15 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.cnn.Conexion;
-import model.dao.interfaces.IUsuarioDAO;
-import model.dto.Usuario;
+import model.dao.interfaces.ICapacitacionDAO;
+import model.dto.Capacitacion;
 
-public class UsuarioDAO implements IUsuarioDAO{
+public class CapacitacionDAO implements ICapacitacionDAO{
 
 	@Override
-	public void create(Usuario u) {
+	public void create(Capacitacion c) {
 		
-		String sql = "insert into usuarios (nombre, tipo) values ('" + u.getName() + "', '" + u.getTipo() + "')";
+		String sql = "insert into capacitaciones (nombre, detalle) values ('" + c.getNombre() + "', '" + c.getDetalle() + "')";
 		
 		try {
 			java.sql.Connection connection = Conexion.getConexion();
@@ -28,13 +28,13 @@ public class UsuarioDAO implements IUsuarioDAO{
 	}
 
 	@Override
-	public List<Usuario> read() {
-			List<Usuario> list = new ArrayList<Usuario>();
+	public List<Capacitacion> read() {
+			List<Capacitacion> list = new ArrayList<Capacitacion>();
 			
 			try {
 				java.sql.Connection connection = Conexion.getConexion();
 				Statement statement = connection.createStatement();
-				String sql = "select id, nombre, tipo from usuarios";
+				String sql = "select id, nombre, detalle from capacitaciones";
 				ResultSet result = statement.executeQuery(sql);
 				while (result.next()) {
 					list.add(mappingCapacitacion(result));
@@ -43,32 +43,39 @@ public class UsuarioDAO implements IUsuarioDAO{
 				System.out.println("Error en read()");
 				e.printStackTrace();
 			}
+			
+			for(int i = 0; i < list.size();i++) {
+				System.out.println("id " + list.get(i).getId()
+				+ " nombre " + list.get(i).getNombre() +
+				" detalle " + list.get(i).getDetalle());
+			}
 			return list;
 	}
 
-	private Usuario mappingCapacitacion(ResultSet result) throws SQLException {
-		Usuario u = new Usuario(result.getInt("id"), result.getString("nombre"), result.getString("tipo"));
-		return u;
+	private Capacitacion mappingCapacitacion(ResultSet result) throws SQLException {
+		Capacitacion c = new Capacitacion(
+				result.getInt("Id"), result.getString("nombre"), result.getString("detalle"));
+		return c;
 	}
 
 	@Override
-	public Usuario read(int id) {
-		Usuario u = null;
+	public Capacitacion read(int id) {
+		Capacitacion c = null;
 		try {
 			java.sql.Connection connection = Conexion.getConexion();
 			Statement statement = connection.createStatement();
-			String sql = "select id, nombre, tipo from usuarios where id = " + id;
+			String sql = "select id, nombre, detalle from capacitaciones where id = " + id;
 			ResultSet result = statement.executeQuery(sql);
-			u = mappingCapacitacion(result);
+			c = mappingCapacitacion(result);
 			} catch (SQLException e) {
 			System.out.println("Error en read(id)");
 			e.printStackTrace();
 		}
-		return u;
+		return c;
 	}
 
 	@Override
-	public void update(Usuario u) {
+	public void update(Capacitacion c) {
 		/*
 		String sql = "update capacitaciones set nombre = '" + c.getNombre() + "', detalle = '" + c.getDetalle() + "' where id = " + c.getId();
 		

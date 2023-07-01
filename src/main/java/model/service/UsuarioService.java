@@ -2,10 +2,10 @@ package model.service;
 
 import java.util.List;
 
-import model.dao.CapacitacionDAO;
-import model.dao.UsuarioDAO;
 import model.dto.Capacitacion;
 import model.dto.Usuario;
+import model.implementacionDao.CapacitacionDAO;
+import model.implementacionDao.UsuarioDAO;
 
 public class UsuarioService {
 	private UsuarioDAO usuariodao = new UsuarioDAO();

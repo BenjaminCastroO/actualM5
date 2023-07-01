@@ -1,6 +1,7 @@
 package model.service;
-import model.dao.CapacitacionDAO;
 import model.dto.*;
+import model.implementacionDao.CapacitacionDAO;
+
 import java.util.List;
 
 
