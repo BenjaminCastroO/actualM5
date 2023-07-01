@@ -1,38 +1,28 @@
 package model.dto;
-
+// java usuario
 public class Usuario {
 	
-	private String username;
-	private String password;
+	private int id;
 	private String name;
-	private String lastName;
+	private String tipo;
 	
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(String username, String password, String name, String lastName) {
+	public Usuario(int id, String name, String tipo) {
 		super();
-		this.username = username;
-		this.password = password;
+		this.id = id;
 		this.name = name;
-		this.lastName = lastName;
+		this.tipo = tipo;
 	}
 
-	public String getUsername() {
-		return username;
+	public int getId() {
+		return id;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -43,15 +33,13 @@ public class Usuario {
 		this.name = name;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
-	
-	
-	
+
 
 }

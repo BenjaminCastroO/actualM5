@@ -16,7 +16,7 @@
           <a class="nav-link" href="<%=request.getContextPath()%>/capacitacion">Cliente</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<%=request.getContextPath()%>/admin">Administrativo</a>
+          <a class="nav-link" href="<%=request.getContextPath()%>/usuario">Administrativo</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<%=request.getContextPath()%>/profesional">Profesional</a>
