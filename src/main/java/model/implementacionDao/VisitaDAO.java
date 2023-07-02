@@ -1,6 +1,5 @@
 package model.implementacionDao;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -8,49 +7,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.cnn.Conexion;
-import model.dao.interfaces.IUsuarioDAO;
-import model.dto.Usuario;
+import model.dao.interfaces.IVisitaDAO;
+import model.dto.Visita;
 
-public class UsuarioDAO implements IUsuarioDAO{
+
+public class VisitaDAO implements IVisitaDAO{
 
 	@Override
-	public Usuario create(Usuario u) {
-		
-		String sql = "insert into usuario (nombre, username, password) values ('" +
-		u.getNombre() + "', '" + u.getUsername() + "', '" + u.getPassword() + "')";
-		
+	public void create(Visita v) {
+		String coma = "', '";
+		String sql = "insert into visita (cliente_id, fecha, hora, lugar, realizado, detalle, profesional_id) values ('" +
+				v.getClienteId() + coma + v.getFecha() + coma + v.getHora() + coma + v.getLugar() + coma + v.isRealizado() +
+				coma + v.getDetalle() + coma + v.getProfesionalId()+ "')";
 		try {
 			java.sql.Connection connection = Conexion.getConexion();
-			
-			PreparedStatement statement = connection.prepareStatement(sql,
-					Statement.RETURN_GENERATED_KEYS);
-			int affectedRows = statement.executeUpdate();
-			if (affectedRows == 0) {
-				throw new SQLException("No se pudo guardar");
-			}
-			ResultSet generatedKeys = statement.getGeneratedKeys();
-			if (generatedKeys.next()) {
-				u.setId(generatedKeys.getInt(1));
-			}
-			
+			Statement statement = connection.createStatement();
+			statement.execute(sql);
 		} catch (SQLException e) {
 			System.out.println("Error en create()");
 			e.printStackTrace();
 		}
-		return u;
 	}
 
 	@Override
-	public List<Usuario> read() {
-			List<Usuario> list = new ArrayList<Usuario>();
+	public List<Visita> read() {
+			List<Visita> list = new ArrayList<Visita>();
 			
 			try {
 				java.sql.Connection connection = Conexion.getConexion();
 				Statement statement = connection.createStatement();
-				String sql = "select id, nombre, username, password from usuario";
+				String sql = "select id, cliente_id, fecha, hora, lugar, realizado, detalle, profesional_id from visita";
 				ResultSet result = statement.executeQuery(sql);
 				while (result.next()) {
-					list.add(mappingUsuario(result));
+					list.add(mappingVisita(result));
 				}
 			} catch (SQLException e) {
 				System.out.println("Error en read()");
@@ -59,29 +48,31 @@ public class UsuarioDAO implements IUsuarioDAO{
 			return list;
 	}
 
-	private Usuario mappingUsuario(ResultSet result) throws SQLException {
-		Usuario u = new Usuario(result.getInt("id"), result.getString("nombre"), result.getString("username"),result.getString("password"));
-		return u;
+	private Visita mappingVisita(ResultSet result) throws SQLException {
+		Visita v = new Visita(result.getInt("id"), result.getInt("cliente_id"), result.getDate("fecha"),
+			result.getTime("hora"), result.getString("lugar"), result.getBoolean("realizado"), 
+			result.getString("detalle"), result.getInt("profesional_id"));
+		return v;
 	}
 
 	@Override
-	public Usuario read(int id) {
-		Usuario u = null;
+	public Visita read(int id) {
+		Visita v = null;
 		try {
-			java.sql.Connection connection = Conexion.getConexion();
-			Statement statement = connection.createStatement();
-			String sql = "select id, nombre, username, password from usuario where id = " + id;
-			ResultSet result = statement.executeQuery(sql);
-			u = mappingUsuario(result);
+				java.sql.Connection connection = Conexion.getConexion();
+				Statement statement = connection.createStatement();
+				String sql = "select id, cliente_id, fecha, hora, lugar, realizado, detalle, profesional_id from visita where id = " + id;
+				ResultSet result = statement.executeQuery(sql);
+				v = mappingVisita(result);
 			} catch (SQLException e) {
-			System.out.println("Error en read(id)");
-			e.printStackTrace();
-		}
-		return u;
+				System.out.println("Error en read(id)");
+				e.printStackTrace();
+			}
+		return v;
 	}
 
 	@Override
-	public void update(Usuario u) {
+	public void update(Visita p) {
 		/*
 		String sql = "update capacitaciones set nombre = '" + c.getNombre() + "', detalle = '" + c.getDetalle() + "' where id = " + c.getId();
 		

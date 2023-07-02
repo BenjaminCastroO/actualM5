@@ -13,7 +13,7 @@
 	<jsp:include page="./header.jsp"></jsp:include>
 
 	<div class="col pt-4">
-		<form class="form " action="usuario" method="GET">
+		<form class="form " action="usuario" method="POST">
 			<button class="btn btn-primary" id="btnMostrar" name="btnMostrar" type="submit" value="1">Mostrar usuarios</button>
 		</form>	
 	</div>
@@ -33,37 +33,37 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">Apellido:</label>
+					<label class="form-label" for="apellido">Apellido:</label>
 						<input class="form-control" type="text"  id="apellido" name="apellido">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">Username:</label>
+					<label class="form-label" for="username">Username:</label>
 						<input class="form-control" type="text"  id="username" name="username">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">Password:</label>
+					<label class="form-label" for="password">Password:</label>
 						<input class="form-control" type="password"  id="password" name="password">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">RUN:</label>
+					<label class="form-label" for="run">RUN:</label>
 						<input class="form-control" type="text"  id="run" name="run">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">e-mail:</label>
+					<label class="form-label" for="correo">e-mail:</label>
 						<input class="form-control" type="text"  id="mail" name="mail">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">Area:</label>
+					<label class="form-label" for="area">Area:</label>
 						<input class="form-control" type="text"  id="area" name="area">
 				</div>
 			</div>	
@@ -72,7 +72,7 @@
 					<a href="${pageContext.request.contextPath}/" class="btn btn-secondary">Volver</a>
 				</div>
 				<div class="col">
-						<button type="submit" class="btn btn-primary">Guardar</button>
+						<button id = "enviar" name= "enviar" value = "admin" type="submit" class="btn btn-primary">Guardar</button>
 				</div>
 			</div>	
 		</form>

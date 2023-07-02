@@ -18,8 +18,8 @@ public class UsuarioService {
 		return usuariodao.read(id);
 	}
 	
-	public void create(Usuario u) {
-		usuariodao.create(u);
+	public Usuario create(Usuario u) {
+		return usuariodao.create(u);
 	}
 	
 	public void update(Usuario u) {

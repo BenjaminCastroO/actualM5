@@ -33,43 +33,43 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">Apellido:</label>
+					<label class="form-label" for="apellido">Apellido:</label>
 						<input class="form-control" type="text"  id="apellido" name="apellido">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">Username:</label>
+					<label class="form-label" for="username">Username:</label>
 						<input class="form-control" type="text"  id="username" name="username">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">Password:</label>
+					<label class="form-label" for="password">Password:</label>
 						<input class="form-control" type="password"  id="password" name="password">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">RUN:</label>
+					<label class="form-label" for="run">RUN:</label>
 						<input class="form-control" type="text"  id="run" name="run">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">e-mail:</label>
-						<input class="form-control" type="text"  id="mail" name="mail">
+					<label class="form-label" for="correo">e-mail:</label>
+						<input class="form-control" type="text"  id="correo" name="correo">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">Telefono:</label>
+					<label class="form-label" for="telefono">Telefono:</label>
 						<input class="form-control" type="text"  id="telefono" name="telefono">
 				</div>
 			</div>	
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">Cargo:</label>
+					<label class="form-label" for="cargo">Cargo:</label>
 						<input class="form-control" type="text"  id="cargo" name="cargo">
 				</div>
 			</div>	
@@ -78,7 +78,7 @@
 					<a href="${pageContext.request.contextPath}/" class="btn btn-secondary">Volver</a>
 				</div>
 				<div class="col">
-						<button type="submit" class="btn btn-primary">Guardar</button>
+						<button id = "enviar" name= "enviar" value = "profesional" type="submit" class="btn btn-primary">Guardar</button>
 				</div>
 			</div>	
 		</form>

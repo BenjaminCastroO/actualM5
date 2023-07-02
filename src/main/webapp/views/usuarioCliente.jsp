@@ -33,32 +33,32 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">Apellido:</label>
+					<label class="form-label" for="apellido">Apellido:</label>
 						<input class="form-control" type="text"  id="apellido" name="apellido">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">Username:</label>
+					<label class="form-label" for="username">Username:</label>
 						<input class="form-control" type="text"  id="username" name="username">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">Password:</label>
+					<label class="form-label" for="password">Password:</label>
 						<input class="form-control" type="password"  id="password" name="password">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">RUT:</label>
+					<label class="form-label" for="rut">RUT:</label>
 						<input class="form-control" type="text"  id="rut" name="rut">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">e-mail:</label>
-						<input class="form-control" type="text"  id="mail" name="mail">
+					<label class="form-label" for="correo">e-mail:</label>
+						<input class="form-control" type="text"  id="correo" name="correo">
 				</div>
 			</div>
 			<div class="row">
@@ -69,8 +69,8 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">Sistema de Salud:</label>
-						<select class="form-select" id="sistema" name="sistema" aria-label="Default select example">
+					<label class="form-label" for="sistemaSalud">Sistema de Salud:</label>
+						<select class="form-select" id="sistemaSalud" name="sistemaSalud" aria-label="Default select example">
   						<option  disabled selected>Selecionar Sistema</option>
   						<option  value="isapre">Isapre</option>
   						<option  value="fonasa">Fonasa</option>
@@ -79,19 +79,19 @@
 			</div>	
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">Direccion:</label>
+					<label class="form-label" for="direccion">Direccion:</label>
 						<input class="form-control" type="text"  id="direccion" name="direccion">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">Comuna:</label>
+					<label class="form-label" for="comuna">Comuna:</label>
 						<input class="form-control" type="text"  id="comuna" name="comuna">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label class="form-label" for="nombre">Edad:</label>
+					<label class="form-label" for="edad">Edad:</label>
 						<input class="form-control" type="number"  id="edad" name="edad">
 				</div>
 			</div>
@@ -100,7 +100,7 @@
 					<a href="${pageContext.request.contextPath}/" class="btn btn-secondary">Volver</a>
 				</div>
 				<div class="col">
-						<button type="submit" class="btn btn-primary">Guardar</button>
+						<button id = "enviar" name= "enviar" value = "cliente" type="submit" class="btn btn-primary">Guardar</button>
 				</div>
 			</div>	
 		</form>

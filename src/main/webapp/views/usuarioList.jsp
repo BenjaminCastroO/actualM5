@@ -16,7 +16,8 @@
 
 	<div class="container ">
 		<h2>Lista de Usuarios</h2>
-		<div class="dropdown">
+		<div class = "row">
+		<div class="dropdown col pt-4">
 			<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
   			  Crear Usuario
  			</button>
@@ -26,7 +27,20 @@
     			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/usuario?op=createProfesional">Profesional</a></li>
  			</ul>
 		</div>
-	</div>
+		
+			<div class="dropdown col pt-4">
+				<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+	  			  Mostrar Usuarios
+	 			</button>
+	  			<ul class="dropdown-menu">
+	   				<li><a class="dropdown-item" href="${pageContext.request.contextPath}/usuario?op=readAdministrativo">Administrativo</a></li>
+	    			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/usuario?op=readCliente">Cliente</a></li>
+	    			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/usuario?op=readProfesional">Profesional</a></li>
+	 			</ul>
+			</div>
+		</div>
+	
+	
 	<div class = "col pt-4"></div>
 	<table class="table pt-4">
 		<thead class="table-dark pt-4">
@@ -40,8 +54,8 @@
 			<c:forEach var="usuario" items="${listaUsuarios}">
 				<tr>
 					<td><c:out value="${usuario.getId()}"/></td>
-					<td><c:out value="${usuario.getName()}"/></td>
-					<td><c:out value="${usuario.getTipo()}"></c:out></td>
+					<td><c:out value="${usuario.getNombre()}"/></td>
+					
 					<td>
 						<a href="${pageContext.request.contextPath}/usuario?id=${usuario.getId()}&op=read"><i class="fa-solid fa-eye"></i></a>
 						<a href="${pageContext.request.contextPath}/usuario?id=${usuario.getId()}&op=edit"><i class="fa-solid fa-pen-to-square"></i></a>
@@ -51,7 +65,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
+</div>
 	<jsp:include page="./footer.jsp"></jsp:include>
 	</div>
 </body>

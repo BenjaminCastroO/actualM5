@@ -7,19 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.cnn.Conexion;
-import model.dao.interfaces.ICapacitacionDAO;
-import model.dto.Capacitacion;
+import model.dao.interfaces.IClienteDAO;
+import model.dto.Cliente;
 
-public class CapacitacionDAO implements ICapacitacionDAO{
+
+public class ClienteDAO implements IClienteDAO{
 
 	@Override
-	public void create(Capacitacion c) {
+	public void create(Cliente c) {
 		String coma = "', '";
-		String sql = "insert into capacitacion (nombre, detalle, fecha, hora, "
-				+ "lugar, duracion, cantidad, cliente_id) values ('" + 
-				c.getNombre() + coma + c.getDetalle() + coma + c.getFecha() +
-				coma + c.getHora() + coma + c.getLugar() + coma + c.getDuracion()
-				+ coma + c.getCantidad() + coma + c.getClienteId() + "')";
+		String sql = "insert into cliente (rut, nombre, apellido, correo, telefono, "
+				+ "afp, sistema_salud, direccion, comuna, edad, usuario_id) values ('" +
+				c.getRut() + coma + c.getNombre() + coma + c.getApellido() + coma + c.getCorreo() 
+				+ coma + c.getTelefono() + coma + c.getAfp()+ coma + c.getSistemaSalud()
+				+ coma + c.getDireccion()+ coma + c.getComuna()+ coma + c.getEdad()
+				+ coma + c.getUsuarioId()+ "')";
 		
 		try {
 			java.sql.Connection connection = Conexion.getConexion();
@@ -32,59 +34,52 @@ public class CapacitacionDAO implements ICapacitacionDAO{
 	}
 
 	@Override
-	public List<Capacitacion> read() {
-			List<Capacitacion> list = new ArrayList<Capacitacion>();
+	public List<Cliente> read() {
+			List<Cliente> list = new ArrayList<Cliente>();
 			
 			try {
 				java.sql.Connection connection = Conexion.getConexion();
 				Statement statement = connection.createStatement();
-				String sql = "select nombre, detalle, fecha, hora, lugar, "
-						+ "duracion, cantidad, cliente_id from capacitacion";
+				String sql = "select id, rut, nombre, apellido, correo, telefono,"
+						+ "afp, sistema_salud, direccion, comuna, edad, usuario_id from cliente";
 				ResultSet result = statement.executeQuery(sql);
 				while (result.next()) {
-					list.add(mappingCapacitacion(result));
+					list.add(mappingCliente(result));
 				}
 			} catch (SQLException e) {
 				System.out.println("Error en read()");
 				e.printStackTrace();
 			}
-			
-			for(int i = 0; i < list.size();i++) {
-				System.out.println("id " + list.get(i).getId()
-				+ " nombre " + list.get(i).getNombre() +
-				" detalle " + list.get(i).getDetalle());
-			}
 			return list;
 	}
 
-	private Capacitacion mappingCapacitacion(ResultSet result) throws SQLException {
-		Capacitacion c = new Capacitacion(
-			result.getInt("id"), result.getString("nombre"), result.getString("detalle"),
-			result.getDate("fecha"), result.getTime("hora"), result.getString("lugar"),
-			result.getFloat("duracion"), result.getInt("cantidad"), result.getInt("cliente_id"));
+	private Cliente mappingCliente(ResultSet result) throws SQLException {
+		Cliente c = new Cliente(result.getInt("id"), result.getString("rut"), result.getString("nombre"),
+			result.getString("apellido"), result.getString("correo"), result.getString("telefono"), 
+			result.getString("afp"), result.getString("sistema_salud"), result.getString("direccion"), 
+			result.getString("comuna"), result.getInt("edad"), result.getInt("usuario_id"));
 		return c;
 	}
 
 	@Override
-	public Capacitacion read(int id) {
-		Capacitacion c = null;
+	public Cliente read(int id) {
+		Cliente c = null;
 		try {
-			java.sql.Connection connection = Conexion.getConexion();
-			Statement statement = connection.createStatement();
-			String sql = "select select nombre, detalle, fecha, hora, lugar,"
-					+ "duracion, cantidad, cliente_id from capacitacion"
-					+ " where id = " + id;    
-			ResultSet result = statement.executeQuery(sql);
-			c = mappingCapacitacion(result);
+				java.sql.Connection connection = Conexion.getConexion();
+				Statement statement = connection.createStatement();
+				String sql = "select id, rut, nombre, apellido, correo, telefono, "
+						+ "afp, sistema_salud, direccion, comuna, edad, usuario_id from cliente where id = " + id;
+				ResultSet result = statement.executeQuery(sql);
+				c = mappingCliente(result);
 			} catch (SQLException e) {
-			System.out.println("Error en read(id)");
-			e.printStackTrace();
-		}
+				System.out.println("Error en read(id)");
+				e.printStackTrace();
+			}
 		return c;
 	}
 
 	@Override
-	public void update(Capacitacion c) {
+	public void update(Cliente c) {
 		/*
 		String sql = "update capacitaciones set nombre = '" + c.getNombre() + "', detalle = '" + c.getDetalle() + "' where id = " + c.getId();
 		
