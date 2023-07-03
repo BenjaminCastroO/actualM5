@@ -70,7 +70,9 @@ public class ClienteDAO implements IClienteDAO{
 				String sql = "select id, rut, nombre, apellido, correo, telefono, "
 						+ "afp, sistema_salud, direccion, comuna, edad, usuario_id from cliente where id = " + id;
 				ResultSet result = statement.executeQuery(sql);
-				c = mappingCliente(result);
+				while (result.next()) {
+					c = mappingCliente(result);
+				}
 			} catch (SQLException e) {
 				System.out.println("Error en read(id)");
 				e.printStackTrace();
@@ -80,18 +82,22 @@ public class ClienteDAO implements IClienteDAO{
 
 	@Override
 	public void update(Cliente c) {
-		/*
-		String sql = "update capacitaciones set nombre = '" + c.getNombre() + "', detalle = '" + c.getDetalle() + "' where id = " + c.getId();
-		
+		System.out.println(c.toString());
+		String sql = "update cliente set rut = '" + c.getRut() + "', "
+				+ "nombre = '" + c.getNombre() + "', apellido ='" + c.getApellido() + 
+				"', correo = '" + c.getCorreo() + "', telefono = '" + c.getTelefono() + 
+				"', afp = '" + c.getAfp() + "', sistema_salud = '" + c.getSistemaSalud()+
+				"', direccion = '" + c.getDireccion() + "', comuna = '" + c.getComuna()+
+				"', edad = " + c.getEdad() + ", usuario_id = " + c.getUsuarioId() +
+				 " where id = " + c.getId();
 		try {
 			java.sql.Connection connection = Conexion.getConexion();
 			Statement statement = connection.createStatement();
-			ResultSet result = statement.executeQuery(sql);
+			statement.execute(sql);
 		} catch (SQLException e) {
 			System.out.println("Error en update()");
 			e.printStackTrace();
 		}
-		*/
 	}
 
 	@Override
