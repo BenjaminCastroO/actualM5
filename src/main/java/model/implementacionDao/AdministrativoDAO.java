@@ -63,7 +63,9 @@ public class AdministrativoDAO implements IAdministrativoDAO{
 				Statement statement = connection.createStatement();
 				String sql = "select id, run, nombre, apellido, correo, area, usuario_id from administrativo where id = " + id;
 				ResultSet result = statement.executeQuery(sql);
-				a = mappingAdministrativo(result);
+				while (result.next()) {
+					a = mappingAdministrativo(result);
+				}
 			} catch (SQLException e) {
 				System.out.println("Error en read(id)");
 				e.printStackTrace();
@@ -73,18 +75,19 @@ public class AdministrativoDAO implements IAdministrativoDAO{
 
 	@Override
 	public void update(Administrativo a) {
-		/*
-		String sql = "update capacitaciones set nombre = '" + c.getNombre() + "', detalle = '" + c.getDetalle() + "' where id = " + c.getId();
-		
+		System.out.println(a.toString());
+		String sql = "update administrativo set run = '" + a.getRun() + "', "
+				+ "nombre = '" + a.getNombre() + "', apellido ='" + a.getApellido() + 
+				"', correo = '" + a.getCorreo() + "', area = '" + a.getArea() + "', usuario_id = " + a.getUsuarioId()
+				+ " where id = " + a.getId();
 		try {
 			java.sql.Connection connection = Conexion.getConexion();
 			Statement statement = connection.createStatement();
-			ResultSet result = statement.executeQuery(sql);
+			statement.execute(sql);
 		} catch (SQLException e) {
 			System.out.println("Error en update()");
 			e.printStackTrace();
 		}
-		*/
 	}
 
 	@Override

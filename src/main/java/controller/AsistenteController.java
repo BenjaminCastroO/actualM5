@@ -12,11 +12,11 @@ import model.dto.Accidente;
 import model.service.AccidenteService;
 
 
-@WebServlet("/accidente")
+@WebServlet("/asistente")
 public class AsistenteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	AccidenteService accidenteService = new AccidenteService();;
+	AccidenteService asistenteService = new AccidenteService();;
 	      
 
     public AsistenteController() {
@@ -38,11 +38,11 @@ public class AsistenteController extends HttpServlet {
 		String op = request.getParameter("op");
 		if(op != null) {
 			if (op.equals("create")) {
-				getServletContext().getRequestDispatcher("/views/accidente.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/views/asistente.jsp").forward(request, response);
 			}
 		}
-		request.setAttribute("listaAccidentes", accidenteService.findAll());
-		getServletContext().getRequestDispatcher("/views/accidenteList.jsp").forward(request, response);
+		request.setAttribute("listaAccidentes", asistenteService.findAll());
+		getServletContext().getRequestDispatcher("/views/asistenteList.jsp").forward(request, response);
 		
 	}
 

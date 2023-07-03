@@ -65,6 +65,16 @@ ProfesionalService profesionalService = new ProfesionalService();
 				request.setAttribute("listaProfesionales", profesionalService.findAll());
 				getServletContext().getRequestDispatcher("/views/usuarioProfesionalList.jsp").forward(request, response);
 			}
+			if(op.equals("editAdministrativo")) {
+				Administrativo admin = administrativoService.findOne(Integer.parseInt(request.getParameter("id")));
+				request.setAttribute("admin", admin);
+				getServletContext().getRequestDispatcher("/views/usuarioAdministrativoEdit.jsp").forward(request, response);	
+			}
+			if(op.equals("readOneAdministrativo")) {
+				Administrativo admin = administrativoService.findOne(Integer.parseInt(request.getParameter("id")));
+				request.setAttribute("admin", admin);
+				getServletContext().getRequestDispatcher("/views/usuarioAdministrativoRead.jsp").forward(request, response);	
+			}
 		}
 		request.setAttribute("listaUsuarios", usuarioService.findAll());
 		getServletContext().getRequestDispatcher("/views/usuarioList.jsp").forward(request, response);
@@ -73,6 +83,7 @@ ProfesionalService profesionalService = new ProfesionalService();
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("post de usuario");
 		String op = request.getParameter("enviar");
 		if(op != null) {
 			if (op.equals("admin")) {
@@ -89,6 +100,18 @@ ProfesionalService profesionalService = new ProfesionalService();
 		        Administrativo admin = new Administrativo(99, run, nombre, apellido,
 		        		correo,  area, usuarioId);
 		        administrativoService.create(admin);
+			}
+			if (op.equals("editAdmin")) {
+				String nombre = request.getParameter("nombre");
+		        int id = Integer.parseInt(request.getParameter("id"));
+		        int usuarioId = Integer.parseInt(request.getParameter("usuarioId"));
+		        String apellido = request.getParameter("apellido");
+		        String run = request.getParameter("run");
+		        String correo = request.getParameter("mail");
+		        String area = request.getParameter("area");
+		        Administrativo admin = new Administrativo(id, run, nombre, apellido,
+		        		correo,  area, usuarioId);
+		        administrativoService.update(admin);
 			}
 			if (op.equals("cliente")) {
 				String nombre = request.getParameter("nombre");
