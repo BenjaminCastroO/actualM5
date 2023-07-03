@@ -69,6 +69,7 @@ ProfesionalService profesionalService = new ProfesionalService();
 			if(op.equals("editCliente")) {
 				Cliente cliente = clienteService.findOne(Integer.parseInt(request.getParameter("id")));
 				request.setAttribute("cliente", cliente);
+				System.out.println(cliente.toString());
 				getServletContext().getRequestDispatcher("/views/usuarioClienteEdit.jsp").forward(request, response);	
 			}
 			if(op.equals("readOneCliente")) {

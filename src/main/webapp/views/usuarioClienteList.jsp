@@ -52,9 +52,9 @@
 					<td><c:out value="${cliente.getUsuarioId()}"/></td>
 			
 					<td>
-						<a href="${pageContext.request.contextPath}/usuario?id=${usuario.getId()}&op=read"><i class="fa-solid fa-eye"></i></a>
-						<a href="${pageContext.request.contextPath}/usuario?id=${usuario.getId()}&op=edit"><i class="fa-solid fa-pen-to-square"></i></a>
-						<a href="${pageContext.request.contextPath}/usuario?id=${usuario.getId()}&op=delete"><i class="fa-solid fa-trash"></i></a>
+						<a href="${pageContext.request.contextPath}/usuario?id=${cliente.getId()}&op=readOneCliente"><i class="fa-solid fa-eye"></i></a>
+						<a href="${pageContext.request.contextPath}/usuario?id=${cliente.getId()}&op=editCliente"><i class="fa-solid fa-pen-to-square"></i></a>
+						<a href="${pageContext.request.contextPath}/usuario?id=${cliente.getId()}&op=deleteCliente"><i class="fa-solid fa-trash"></i></a>
 					</td>				
 				</tr>
 			</c:forEach>
