@@ -44,9 +44,9 @@
 					<td><c:out value="${profesional.getUsuarioId()}"/></td>
 			
 					<td>
-						<a href="${pageContext.request.contextPath}/usuario?id=${usuario.getId()}&op=read"><i class="fa-solid fa-eye"></i></a>
-						<a href="${pageContext.request.contextPath}/usuario?id=${usuario.getId()}&op=edit"><i class="fa-solid fa-pen-to-square"></i></a>
-						<a href="${pageContext.request.contextPath}/usuario?id=${usuario.getId()}&op=delete"><i class="fa-solid fa-trash"></i></a>
+						<a href="${pageContext.request.contextPath}/usuario?id=${profesional.getId()}&op=readOneProfesional"><i class="fa-solid fa-eye"></i></a>
+						<a href="${pageContext.request.contextPath}/usuario?id=${profesional.getId()}&op=editProfesional"><i class="fa-solid fa-pen-to-square"></i></a>
+						<a href="${pageContext.request.contextPath}/usuario?id=${profesional.getId()}&op=deleteProfesional"><i class="fa-solid fa-trash"></i></a>
 					</td>				
 				</tr>
 			</c:forEach>

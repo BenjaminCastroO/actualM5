@@ -96,7 +96,7 @@ ProfesionalService profesionalService = new ProfesionalService();
 				getServletContext().getRequestDispatcher("/views/usuarioProfesionalRead.jsp").forward(request, response);	
 			}
 			if (op.equals("readProfesional")) {		
-				request.setAttribute("listaProfesionales", clienteService.findAll());
+				request.setAttribute("listaProfesionales", profesionalService.findAll());
 				getServletContext().getRequestDispatcher("/views/usuarioProfesionalList.jsp").forward(request, response);
 			}
 		}

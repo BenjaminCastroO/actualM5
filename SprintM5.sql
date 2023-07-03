@@ -122,7 +122,6 @@ CREATE TABLE asistente (
   FOREIGN KEY (usuario_id) REFERENCES usuario(id),
   PRIMARY KEY (capacitacion_id, usuario_id)
 );
-
 INSERT INTO usuario (nombre, username, password)
 VALUES
   ('John Doe', 'johndoe', 'password1'),
@@ -206,23 +205,25 @@ VALUES
   ('Capacitación 3', 'Detalles de la capacitación 3', '2023-07-05', '10:00:00', 'Sala de capacitaciones C', 2.0, 25, 3),
   ('Capacitación 4', 'Detalles de la capacitación 4', '2023-07-07', '13:00:00', 'Salón de eventos D', 4.5, 30, 4),
   ('Capacitación 5', 'Detalles de la capacitación 5', '2023-07-09', '11:30:00', 'Sala de conferencias E', 2.5, 18, 5);
+  
+  select * from visita;
 
 
 INSERT INTO visita (cliente_id, fecha, hora, lugar, realizado, detalle, profesional_id)
 VALUES
-  (1, '2023-07-02', '08:30:00', 'Oficina del cliente', true, 'Detalles de la visita 1', 21),
-  (2, '2023-07-04', '15:00:00', 'Lugar de trabajo del cliente', true, 'Detalles de la visita 2', 22),
-  (3, '2023-07-06', '09:30:00', 'Oficina principal del cliente', false, 'Detalles de la visita 3', 23),
-  (4, '2023-07-08', '14:00:00', 'Instalaciones del cliente', false, 'Detalles de la visita 4', 24),
-  (5, '2023-07-10', '12:30:00', 'Sitio del proyecto', false, 'Detalles de la visita 5', 25);
+  (1, '2023-07-02', '08:30:00', 'Oficina del cliente', true, 'Detalles de la visita 1', 1),
+  (2, '2023-07-04', '15:00:00', 'Lugar de trabajo del cliente', true, 'Detalles de la visita 2', 2),
+  (3, '2023-07-06', '09:30:00', 'Oficina principal del cliente', false, 'Detalles de la visita 3', 3),
+  (4, '2023-07-08', '14:00:00', 'Instalaciones del cliente', false, 'Detalles de la visita 4', 4),
+  (5, '2023-07-10', '12:30:00', 'Sitio del proyecto', false, 'Detalles de la visita 5', 5);
 
 INSERT INTO chequeo (visita_id, detalle, estado)
 VALUES
-  (1, 'Chequeo 1', 'Pendiente'),
-  (2, 'Chequeo 2', 'Completado'),
-  (3, 'Chequeo 3', 'Pendiente'),
-  (4, 'Chequeo 4', 'Completado'),
-  (5, 'Chequeo 5', 'Pendiente');
+  (6, 'Chequeo 1', 'Pendiente'),
+  (7, 'Chequeo 2', 'Completado'),
+  (8, 'Chequeo 3', 'Pendiente'),
+  (9, 'Chequeo 4', 'Completado'),
+  (10, 'Chequeo 5', 'Pendiente');
 
 
 INSERT INTO pago (cliente_id, monto, fecha_pago)
@@ -236,11 +237,11 @@ VALUES
 
 INSERT INTO asesoria (nombre, detalle, profesional_id, cliente_id)
 VALUES
-  ('Asesoría 1', 'Detalles de la asesoría 1', 21, 1),
-  ('Asesoría 2', 'Detalles de la asesoría 2', 22, 2),
-  ('Asesoría 3', 'Detalles de la asesoría 3', 23, 3),
-  ('Asesoría 4', 'Detalles de la asesoría 4', 24, 4),
-  ('Asesoría 5', 'Detalles de la asesoría 5', 25, 5);
+  ('Asesoría 1', 'Detalles de la asesoría 1', 1, 1),
+  ('Asesoría 2', 'Detalles de la asesoría 2', 2, 2),
+  ('Asesoría 3', 'Detalles de la asesoría 3', 3, 3),
+  ('Asesoría 4', 'Detalles de la asesoría 4', 4, 4),
+  ('Asesoría 5', 'Detalles de la asesoría 5', 5, 5);
 
 
 INSERT INTO accidente (cliente_id, fecha_accidente, detalle)

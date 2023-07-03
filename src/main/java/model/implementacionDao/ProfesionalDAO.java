@@ -64,7 +64,10 @@ public class ProfesionalDAO implements IProfesionalDAO{
 				Statement statement = connection.createStatement();
 				String sql = "select id, run, nombre, apellido, correo, telefono, cargo, usuario_id from profesional where id = " + id;
 				ResultSet result = statement.executeQuery(sql);
-				p = mappingProfesional(result);
+				while (result.next()) {
+					p = mappingProfesional(result);
+				}
+				
 			} catch (SQLException e) {
 				System.out.println("Error en read(id)");
 				e.printStackTrace();
