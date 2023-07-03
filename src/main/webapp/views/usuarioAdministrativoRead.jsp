@@ -19,7 +19,7 @@
 	</div>
 
 	<div class="container">
-		<h2>Editar Usuario Administrativo</h2>	
+		<h2>Ver Usuario Administrativo</h2>	
 	</div>
 	<div class="container">
 		<form class="form" action="usuario" method="POST">
@@ -28,44 +28,44 @@
 			<div class="row">
 				<div class="col">
 					<label class="form-label" for="id">Id Admin: ${admin.getId()}</label>
-					<input class="form-control" type="hidden"  id="id" name="id" value = "${admin.getId()}">
+					<input disabled class="form-control" type="hidden"  id="id" name="id" value = "${admin.getId()}">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<label class="form-label" for="usuarioId" >Id Usuario: ${admin.getUsuarioId()}</label>
-					<input class="form-control" type="hidden"  id="usuarioId" name="usuarioId" value = "${admin.getUsuarioId()}">
+					<input disabled class="form-control" type="hidden"  id="usuarioId" name="usuarioId" value = "${admin.getUsuarioId()}">
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="col">
 					<label class="form-label" for="nombre">Nombre:</label>
-						<input class="form-control" type="text"  id="nombre" name="nombre" value = "${admin.getNombre()}">
+						<input disabled class="form-control" type="text"  id="nombre" name="nombre" value = "${admin.getNombre()}">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<label class="form-label" for="apellido">Apellido:</label>
-						<input class="form-control" type="text"  id="apellido" name="apellido" value = "${admin.getApellido()}">
+						<input disabled class="form-control" type="text"  id="apellido" name="apellido" value = "${admin.getApellido()}">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<label class="form-label" for="run">RUN:</label>
-						<input class="form-control" type="text"  id="run" name="run" value = "${admin.getRun()}">
+						<input disabled class="form-control" type="text"  id="run" name="run" value = "${admin.getRun()}">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<label class="form-label" for="correo">e-mail:</label>
-						<input class="form-control" type="text"  id="mail" name="mail" value = "${admin.getCorreo()}">
+						<input disabled class="form-control" type="text"  id="mail" name="mail" value = "${admin.getCorreo()}">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<label class="form-label" for="area">Area:</label>
-						<input class="form-control" type="text"  id="area" name="area" value = "${admin.getArea()}">
+						<input disabled class="form-control" type="text"  id="area" name="area" value = "${admin.getArea()}">
 				</div>
 			</div>	
 			<div class="row pt-4">

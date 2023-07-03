@@ -47,24 +47,6 @@ ProfesionalService profesionalService = new ProfesionalService();
 			if (op.equals("createAdministrativo")) {		
 				getServletContext().getRequestDispatcher("/views/usuarioAdministrativo.jsp").forward(request, response);
 			}
-			if (op.equals("createCliente")) {
-				getServletContext().getRequestDispatcher("/views/usuarioCliente.jsp").forward(request, response);
-			}
-			if (op.equals("createProfesional")) {
-				getServletContext().getRequestDispatcher("/views/usuarioProfesional.jsp").forward(request, response);
-			}
-			if (op.equals("readAdministrativo")) {		
-				request.setAttribute("listaAdministrativos", administrativoService.findAll());
-				getServletContext().getRequestDispatcher("/views/usuarioAdministrativoList.jsp").forward(request, response);
-			}
-			if (op.equals("readCliente")) {
-				request.setAttribute("listaClientes", clienteService.findAll());
-				getServletContext().getRequestDispatcher("/views/usuarioClienteList.jsp").forward(request, response);
-			}
-			if (op.equals("readProfesional")) {
-				request.setAttribute("listaProfesionales", profesionalService.findAll());
-				getServletContext().getRequestDispatcher("/views/usuarioProfesionalList.jsp").forward(request, response);
-			}
 			if(op.equals("editAdministrativo")) {
 				Administrativo admin = administrativoService.findOne(Integer.parseInt(request.getParameter("id")));
 				request.setAttribute("admin", admin);
@@ -74,6 +56,48 @@ ProfesionalService profesionalService = new ProfesionalService();
 				Administrativo admin = administrativoService.findOne(Integer.parseInt(request.getParameter("id")));
 				request.setAttribute("admin", admin);
 				getServletContext().getRequestDispatcher("/views/usuarioAdministrativoRead.jsp").forward(request, response);	
+			}
+			if (op.equals("readAdministrativo")) {		
+				request.setAttribute("listaAdministrativos", administrativoService.findAll());
+				getServletContext().getRequestDispatcher("/views/usuarioAdministrativoList.jsp").forward(request, response);
+			}
+			
+			
+			if (op.equals("createCliente")) {		
+				getServletContext().getRequestDispatcher("/views/usuarioCliente.jsp").forward(request, response);
+			}
+			if(op.equals("editCliente")) {
+				Cliente cliente = clienteService.findOne(Integer.parseInt(request.getParameter("id")));
+				request.setAttribute("cliente", cliente);
+				getServletContext().getRequestDispatcher("/views/usuarioClienteEdit.jsp").forward(request, response);	
+			}
+			if(op.equals("readOneCliente")) {
+				Cliente cliente = clienteService.findOne(Integer.parseInt(request.getParameter("id")));
+				request.setAttribute("cliente", cliente);
+				getServletContext().getRequestDispatcher("/views/usuarioClienteRead.jsp").forward(request, response);	
+			}
+			if (op.equals("readCliente")) {		
+				request.setAttribute("listaClientes", clienteService.findAll());
+				getServletContext().getRequestDispatcher("/views/usuarioClienteList.jsp").forward(request, response);
+			}
+ 
+			
+			if (op.equals("createProfesional")) {		
+				getServletContext().getRequestDispatcher("/views/usuarioProfesional.jsp").forward(request, response);
+			}
+			if(op.equals("editProfesional")) {
+				Profesional profesional= profesionalService.findOne(Integer.parseInt(request.getParameter("id")));
+				request.setAttribute("profesional", profesional);
+				getServletContext().getRequestDispatcher("/views/usuarioProfesionalEdit.jsp").forward(request, response);	
+			}
+			if(op.equals("readOneProfesional")) {
+				Profesional profesional= profesionalService.findOne(Integer.parseInt(request.getParameter("id")));
+				request.setAttribute("profesional", profesional);
+				getServletContext().getRequestDispatcher("/views/usuarioProfesionalRead.jsp").forward(request, response);	
+			}
+			if (op.equals("readProfesional")) {		
+				request.setAttribute("listaProfesionales", clienteService.findAll());
+				getServletContext().getRequestDispatcher("/views/usuarioProfesionalList.jsp").forward(request, response);
 			}
 		}
 		request.setAttribute("listaUsuarios", usuarioService.findAll());
@@ -134,6 +158,25 @@ ProfesionalService profesionalService = new ProfesionalService();
 		        		edad, usuarioId);
 		        clienteService.create(cliente);
 			}
+			if (op.equals("editCliente")) {
+				String nombre = request.getParameter("nombre");
+		        int id = Integer.parseInt(request.getParameter("id"));
+		        int usuarioId = Integer.parseInt(request.getParameter("usuarioId"));
+		        String rut = request.getParameter("rut");
+		        String apellido = request.getParameter("apellido");
+		        String correo = request.getParameter("correo");
+		        String telefono = request.getParameter("telefono");
+		        String afp = request.getParameter("afp");
+		        String sistemaSalud = request.getParameter("sistemaSalud");
+		        String direccion = request.getParameter("direccion");
+		        String comuna = request.getParameter("comuna");
+		        int edad = Integer.parseInt(request.getParameter("edad"));
+		        Cliente cliente= new Cliente(id, rut, nombre, apellido,
+		        		correo, telefono, afp, sistemaSalud, direccion, comuna, 
+		        		edad, usuarioId);
+		        clienteService.update(cliente);
+			}
+			
 			if (op.equals("profesional")) {
 				String nombre = request.getParameter("nombre");
 		        String username = request.getParameter("username");
@@ -149,6 +192,19 @@ ProfesionalService profesionalService = new ProfesionalService();
 		        Profesional profesional = new Profesional(99, run, nombre, apellido,
 		        		correo, telefono, cargo, usuarioId);
 		        profesionalService.create(profesional);
+			}
+			if (op.equals("editProfesional")) {
+				String nombre = request.getParameter("nombre");
+		        int id = Integer.parseInt(request.getParameter("id"));
+		        int usuarioId = Integer.parseInt(request.getParameter("usuarioId"));
+		        String run = request.getParameter("run");
+		        String apellido = request.getParameter("apellido");
+		        String correo = request.getParameter("correo");
+		        String telefono = request.getParameter("telefono");
+		        String cargo = request.getParameter("cargo");
+		        Profesional profesional= new Profesional(id, run, nombre, apellido,
+		        		correo, telefono, cargo, usuarioId);
+		        profesionalService.update(profesional);
 			}
 		}
         
