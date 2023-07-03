@@ -1,5 +1,6 @@
 package model.implementacionDao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -7,20 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.cnn.Conexion;
-import model.dao.interfaces.ICapacitacionDAO;
-import model.dto.Capacitacion;
+import model.dao.interfaces.IPagoDAO;
+import model.dto.Pago;
 
-public class CapacitacionDAO implements ICapacitacionDAO{
+public class PagoDAO implements IPagoDAO{
 
 	@Override
-	public void create(Capacitacion c) {
-		String coma = "', '";
-		String sql = "insert into capacitacion (nombre, detalle, fecha, hora, "
-				+ "lugar, duracion, cantidad, cliente_id) values ('" + 
-				c.getNombre() + coma + c.getDetalle() + coma + c.getFecha() +
-				coma + c.getHora() + coma + c.getLugar() + coma + c.getDuracion()
-				+ coma + c.getCantidad() + coma + c.getClienteId() + "')";
+	public void create(Pago p) {
 		
+		String sql = "insert into pago (cliente_id, monto, fecha_pago) values ('" +
+		p.getClienteId() + "', '" + p.getMonto() + "', '" + p.getFechaPago() + "')";	
 		try {
 			java.sql.Connection connection = Conexion.getConexion();
 			Statement statement = connection.createStatement();
@@ -32,59 +29,47 @@ public class CapacitacionDAO implements ICapacitacionDAO{
 	}
 
 	@Override
-	public List<Capacitacion> read() {
-			List<Capacitacion> list = new ArrayList<Capacitacion>();
+	public List<Pago> read() {
+			List<Pago> list = new ArrayList<Pago>();
 			
 			try {
 				java.sql.Connection connection = Conexion.getConexion();
 				Statement statement = connection.createStatement();
-				String sql = "select id, nombre, detalle, fecha, hora, lugar, "
-						+ "duracion, cantidad, cliente_id from capacitacion";
+				String sql = "select id, cliente_id, monto, fecha_pago from pago";
 				ResultSet result = statement.executeQuery(sql);
 				while (result.next()) {
-					list.add(mappingCapacitacion(result));
+					list.add(mappingPago(result));
 				}
 			} catch (SQLException e) {
 				System.out.println("Error en read()");
 				e.printStackTrace();
 			}
-			
-			for(int i = 0; i < list.size();i++) {
-				System.out.println("id " + list.get(i).getId()
-				+ " nombre " + list.get(i).getNombre() +
-				" detalle " + list.get(i).getDetalle());
-			}
 			return list;
 	}
 
-	private Capacitacion mappingCapacitacion(ResultSet result) throws SQLException {
-		Capacitacion c = new Capacitacion(
-			result.getInt("id"), result.getString("nombre"), result.getString("detalle"),
-			result.getDate("fecha"), result.getTime("hora"), result.getString("lugar"),
-			result.getFloat("duracion"), result.getInt("cantidad"), result.getInt("cliente_id"));
-		return c;
+	private Pago mappingPago(ResultSet result) throws SQLException {
+		Pago p = new Pago(result.getInt("id"), result.getInt("cliente_id"), result.getFloat("monto"),result.getDate("fecha_pago"));
+		return p;
 	}
 
 	@Override
-	public Capacitacion read(int id) {
-		Capacitacion c = null;
+	public Pago read(int id) {
+		Pago p = null;
 		try {
 			java.sql.Connection connection = Conexion.getConexion();
 			Statement statement = connection.createStatement();
-			String sql = "select select nombre, detalle, fecha, hora, lugar,"
-					+ "duracion, cantidad, cliente_id from capacitacion"
-					+ " where id = " + id;    
+			String sql = "select id, cliente_id, monto, fecha_pago from pago where id = " + id;
 			ResultSet result = statement.executeQuery(sql);
-			c = mappingCapacitacion(result);
+			p = mappingPago(result);
 			} catch (SQLException e) {
 			System.out.println("Error en read(id)");
 			e.printStackTrace();
 		}
-		return c;
+		return p;
 	}
 
 	@Override
-	public void update(Capacitacion c) {
+	public void update(Pago u) {
 		/*
 		String sql = "update capacitaciones set nombre = '" + c.getNombre() + "', detalle = '" + c.getDetalle() + "' where id = " + c.getId();
 		

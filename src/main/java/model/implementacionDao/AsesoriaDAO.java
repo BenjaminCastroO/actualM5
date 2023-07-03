@@ -1,5 +1,6 @@
 package model.implementacionDao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -7,20 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.cnn.Conexion;
-import model.dao.interfaces.ICapacitacionDAO;
-import model.dto.Capacitacion;
+import model.dao.interfaces.IAsesoriaDAO;
+import model.dto.Asesoria;
 
-public class CapacitacionDAO implements ICapacitacionDAO{
+public class AsesoriaDAO implements IAsesoriaDAO{
 
 	@Override
-	public void create(Capacitacion c) {
-		String coma = "', '";
-		String sql = "insert into capacitacion (nombre, detalle, fecha, hora, "
-				+ "lugar, duracion, cantidad, cliente_id) values ('" + 
-				c.getNombre() + coma + c.getDetalle() + coma + c.getFecha() +
-				coma + c.getHora() + coma + c.getLugar() + coma + c.getDuracion()
-				+ coma + c.getCantidad() + coma + c.getClienteId() + "')";
+	public void create(Asesoria a) {
 		
+		String sql = "insert into asesoria (nombre, detalle, profesional_id, cliente_id) values ('" +
+		a.getNombre() + "', '" + a.getDetalle() + "', '" + a.getProfesionalId()+ "', '" + a.getClienteId() + "')";	
 		try {
 			java.sql.Connection connection = Conexion.getConexion();
 			Statement statement = connection.createStatement();
@@ -32,59 +29,48 @@ public class CapacitacionDAO implements ICapacitacionDAO{
 	}
 
 	@Override
-	public List<Capacitacion> read() {
-			List<Capacitacion> list = new ArrayList<Capacitacion>();
+	public List<Asesoria> read() {
+			List<Asesoria> list = new ArrayList<Asesoria>();
 			
 			try {
 				java.sql.Connection connection = Conexion.getConexion();
 				Statement statement = connection.createStatement();
-				String sql = "select id, nombre, detalle, fecha, hora, lugar, "
-						+ "duracion, cantidad, cliente_id from capacitacion";
+				String sql = "select id, nombre, detalle, profesional_id, cliente_id from asesoria";
 				ResultSet result = statement.executeQuery(sql);
 				while (result.next()) {
-					list.add(mappingCapacitacion(result));
+					list.add(mappingAsesoria(result));
 				}
 			} catch (SQLException e) {
 				System.out.println("Error en read()");
 				e.printStackTrace();
 			}
-			
-			for(int i = 0; i < list.size();i++) {
-				System.out.println("id " + list.get(i).getId()
-				+ " nombre " + list.get(i).getNombre() +
-				" detalle " + list.get(i).getDetalle());
-			}
 			return list;
 	}
 
-	private Capacitacion mappingCapacitacion(ResultSet result) throws SQLException {
-		Capacitacion c = new Capacitacion(
-			result.getInt("id"), result.getString("nombre"), result.getString("detalle"),
-			result.getDate("fecha"), result.getTime("hora"), result.getString("lugar"),
-			result.getFloat("duracion"), result.getInt("cantidad"), result.getInt("cliente_id"));
-		return c;
+	private Asesoria mappingAsesoria(ResultSet result) throws SQLException {
+		Asesoria a = new Asesoria(result.getInt("id"), result.getString("nombre"), result.getString("detalle"),
+				result.getInt("profesional_id"),result.getInt("cliente_id"));
+		return a;
 	}
 
 	@Override
-	public Capacitacion read(int id) {
-		Capacitacion c = null;
+	public Asesoria read(int id) {
+		Asesoria a = null;
 		try {
 			java.sql.Connection connection = Conexion.getConexion();
 			Statement statement = connection.createStatement();
-			String sql = "select select nombre, detalle, fecha, hora, lugar,"
-					+ "duracion, cantidad, cliente_id from capacitacion"
-					+ " where id = " + id;    
+			String sql = "select id, nombre, detalle, profesional_id, cliente_id from asesoria where id = " + id;
 			ResultSet result = statement.executeQuery(sql);
-			c = mappingCapacitacion(result);
+			a = mappingAsesoria(result);
 			} catch (SQLException e) {
 			System.out.println("Error en read(id)");
 			e.printStackTrace();
 		}
-		return c;
+		return a;
 	}
 
 	@Override
-	public void update(Capacitacion c) {
+	public void update(Asesoria a) {
 		/*
 		String sql = "update capacitaciones set nombre = '" + c.getNombre() + "', detalle = '" + c.getDetalle() + "' where id = " + c.getId();
 		

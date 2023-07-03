@@ -31,7 +31,7 @@ public class VisitaDAO implements IVisitaDAO{
 
 	@Override
 	public List<Visita> read() {
-			List<Visita> list = new ArrayList<Visita>();
+			List<Visita> list = new ArrayList<Visita>();	
 			
 			try {
 				java.sql.Connection connection = Conexion.getConexion();

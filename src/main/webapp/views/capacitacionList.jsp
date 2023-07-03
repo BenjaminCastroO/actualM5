@@ -25,6 +25,12 @@
 				<th>Id Capacitacion</th>
 				<th>Nombre</th>
 				<th>Detalle</th>
+				<th>Fecha</th>
+				<th>Hora</th>
+				<th>Lugar</th>
+				<th>Duración</th>
+				<th>Cantidad</th>
+				<th>Id Cliente</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -32,7 +38,13 @@
 				<tr>
 					<td><c:out value="${capacitacion.getId()}"/></td>
 					<td><c:out value="${capacitacion.getNombre()}"/></td>
-					<td><c:out value="${capacitacion.getDetalle()}"></c:out></td>
+					<td><c:out value="${capacitacion.getDetalle()}"/></td>
+					<td><c:out value="${capacitacion.getFecha()}"/></td>
+					<td><c:out value="${capacitacion.getHora()}"/></td>
+					<td><c:out value="${capacitacion.getLugar()}"/></td>
+					<td><c:out value="${capacitacion.getDuracion()}"/></td>
+					<td><c:out value="${capacitacion.getCantidad()}"/></td>
+					<td><c:out value="${capacitacion.getClienteId()}"></c:out></td>
 					<td>
 						<a href="${pageContext.request.contextPath}/capacitacion?id=${capacitacion.getId()}&op=read"><i class="fa-solid fa-eye"></i></a>
 						<a href="${pageContext.request.contextPath}/capacitacion?id=${capacitacion.getId()}&op=edit"><i class="fa-solid fa-pen-to-square"></i></a>

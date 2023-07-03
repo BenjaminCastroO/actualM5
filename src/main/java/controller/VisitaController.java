@@ -9,18 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.dto.Capacitacion;
-import model.service.CapacitacionService;
+import model.dto.Visita;
+import model.service.VisitaService;
 
 
-@WebServlet("/capacitacion")
-public class CapacitacionController extends HttpServlet {
+@WebServlet("/visita")
+public class VisitaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	CapacitacionService capacitacionService = new CapacitacionService();;
+	VisitaService visitaService = new VisitaService();;
 	      
 
-    public CapacitacionController() {
+    public VisitaController() {
         super();
         }
 
@@ -39,26 +39,19 @@ public class CapacitacionController extends HttpServlet {
 		String op = request.getParameter("op");
 		if(op != null) {
 			if (op.equals("create")) {
-				getServletContext().getRequestDispatcher("/views/capacitacion.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/views/visita.jsp").forward(request, response);
 			}
 		}
-		request.setAttribute("listaCapacitaciones", capacitacionService.findAll());
-		getServletContext().getRequestDispatcher("/views/capacitacionList.jsp").forward(request, response);
+		request.setAttribute("listaVisitas", visitaService.findAll());
+		getServletContext().getRequestDispatcher("/views/visitaList.jsp").forward(request, response);
 		
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//solución al problema: para evitar que al redireccionar desde login a capacitacion se llame al post de capacitacion controller se verifica
-		// que el request tenga el parametro idcap distinto de null ya que el codigo del metodo post está reservado para el uso del formulario de creación
-		// de una capacitación.
-		/*if((Objects.isNull(request.getParameter("idcap")))) {
-			getServletContext().getRequestDispatcher("/views/capacitacion.jsp").forward(request, response);
-		}
-		*/
+
         String nombre = request.getParameter("nombre");
         String detalle = request.getParameter("detalle");
-       
 		doGet(request, response);
 	}
 
