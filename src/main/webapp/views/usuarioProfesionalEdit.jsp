@@ -28,7 +28,7 @@
 			<div class="row">
 				<div class="col">
 					<label class="form-label" for="id">Id Profesional: ${profesional.getId()}</label>
-					<input class="form-control" type="hidden"  id="id" name="id" value = "${admin.getId()}">
+					<input class="form-control" type="hidden"  id="id" name="id" value = "${profesional.getId()}">
 				</div>
 			</div>
 			<div class="row">
@@ -59,7 +59,7 @@
 			<div class="row">
 				<div class="col">
 					<label class="form-label" for="correo">e-mail:</label>
-						<input class="form-control" type="text"  id="mail" name="mail" value = "${profesional.getCorreo()}">
+						<input class="form-control" type="text"  id="correo" name="correo" value = "${profesional.getCorreo()}">
 				</div>
 			</div>
 			<div class="row">
@@ -79,7 +79,7 @@
 					<a href="${pageContext.request.contextPath}/" class="btn btn-secondary">Volver</a>
 				</div>
 				<div class="col">
-						<button id = "enviar" name= "enviar" value = "editAdmin" type="submit" class="btn btn-primary">Guardar</button>
+						<button id = "enviar" name= "enviar" value = "editProfesional" type="submit" class="btn btn-primary">Guardar</button>
 				</div>
 			</div>	
 		</form>

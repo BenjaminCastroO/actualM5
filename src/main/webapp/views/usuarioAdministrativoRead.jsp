@@ -72,9 +72,7 @@
 				<div class="col">
 					<a href="${pageContext.request.contextPath}/" class="btn btn-secondary">Volver</a>
 				</div>
-				<div class="col">
-						<button id = "enviar" name= "enviar" value = "editAdmin" type="submit" class="btn btn-primary">Guardar</button>
-				</div>
+				
 			</div>	
 		</form>
 	</div>

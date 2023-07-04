@@ -26,36 +26,30 @@
 				<th>Nombre</th>
 				<th>Apellido</th>
 				<th>Correo</th>
-				<th>Telefono</th>
-				<th>Afp</th>
-				<th>Sistema de salud</th>
-				<th>Direccion</th>
 				<th>Comuna</th>
 				<th>Edad</th>
 				<th>Id Usuario</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="cliente" items="${listaClientes}">
+		<c:forEach var="cliente" items="${listaClientes}">
 				<tr>
 					<td><c:out value="${cliente.getId()}"/></td>
 					<td><c:out value="${cliente.getRut()}"/></td>
 					<td><c:out value="${cliente.getNombre()}"/></td>
 					<td><c:out value="${cliente.getApellido()}"/></td>
 					<td><c:out value="${cliente.getCorreo()}"/></td>
-					<td><c:out value="${cliente.getTelefono()}"/></td>
-					<td><c:out value="${cliente.getAfp()}"/></td>
-					<td><c:out value="${cliente.getSistemaSalud()}"/></td>
-					<td><c:out value="${cliente.getDireccion()}"/></td>
+
 					<td><c:out value="${cliente.getComuna()}"/></td>
 					<td><c:out value="${cliente.getEdad()}"/></td>
 					<td><c:out value="${cliente.getUsuarioId()}"/></td>
-			
+					
 					<td>
 						<a href="${pageContext.request.contextPath}/usuario?id=${cliente.getId()}&op=readOneCliente"><i class="fa-solid fa-eye"></i></a>
 						<a href="${pageContext.request.contextPath}/usuario?id=${cliente.getId()}&op=editCliente"><i class="fa-solid fa-pen-to-square"></i></a>
-						<a href="${pageContext.request.contextPath}/usuario?id=${cliente.getId()}&op=deleteCliente"><i class="fa-solid fa-trash"></i></a>
-					</td>				
+						<a href="${pageContext.request.contextPath}/usuario?id=${clientes.getId()}&op=deleteCliente"><i class="fa-solid fa-trash"></i></a>
+					</td>	
+								
 				</tr>
 			</c:forEach>
 		</tbody>

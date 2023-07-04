@@ -77,9 +77,13 @@ ProfesionalService profesionalService = new ProfesionalService();
 				request.setAttribute("cliente", cliente);
 				getServletContext().getRequestDispatcher("/views/usuarioClienteRead.jsp").forward(request, response);	
 			}
-			if (op.equals("readCliente")) {		
+			if (op.equals("readCliente")) {	
+				System.out.println("Aqui");
 				request.setAttribute("listaClientes", clienteService.findAll());
+				System.out.println("Aqui2");
 				getServletContext().getRequestDispatcher("/views/usuarioClienteList.jsp").forward(request, response);
+				System.out.println("Aqui3");
+				
 			}
  
 			
@@ -99,6 +103,7 @@ ProfesionalService profesionalService = new ProfesionalService();
 			if (op.equals("readProfesional")) {		
 				request.setAttribute("listaProfesionales", profesionalService.findAll());
 				getServletContext().getRequestDispatcher("/views/usuarioProfesionalList.jsp").forward(request, response);
+				System.out.println("Aqui3");
 			}
 		}
 		request.setAttribute("listaUsuarios", usuarioService.findAll());
@@ -137,6 +142,8 @@ ProfesionalService profesionalService = new ProfesionalService();
 		        Administrativo admin = new Administrativo(id, run, nombre, apellido,
 		        		correo,  area, usuarioId);
 		        administrativoService.update(admin);
+		        request.setAttribute("listaAdministrativos", administrativoService.findAll());
+				getServletContext().getRequestDispatcher("/views/usuarioAdministrativoList.jsp").forward(request, response);
 			}
 			if (op.equals("cliente")) {
 				String nombre = request.getParameter("nombre");
@@ -206,6 +213,9 @@ ProfesionalService profesionalService = new ProfesionalService();
 		        Profesional profesional= new Profesional(id, run, nombre, apellido,
 		        		correo, telefono, cargo, usuarioId);
 		        profesionalService.update(profesional);
+		        request.setAttribute("listaProfesionales", profesionalService.findAll());
+				getServletContext().getRequestDispatcher("/views/usuarioProfesionalList.jsp").forward(request, response);
+		       
 			}
 		}
         

@@ -77,18 +77,19 @@ public class ProfesionalDAO implements IProfesionalDAO{
 
 	@Override
 	public void update(Profesional p) {
-		/*
-		String sql = "update capacitaciones set nombre = '" + c.getNombre() + "', detalle = '" + c.getDetalle() + "' where id = " + c.getId();
-		
+		System.out.println(p.toString());
+		String sql = "update profesional set run = '" + p.getRun() + "', "
+				+ "nombre = '" + p.getNombre() + "', apellido ='" + p.getApellido() + 
+				"', correo = '" + p.getCorreo() + "', telefono = '" + p.getTelefono() + "', cargo = '" + p.getCargo() + "', usuario_id = " + p.getUsuarioId()
+				+ " where id = " + p.getId();
 		try {
 			java.sql.Connection connection = Conexion.getConexion();
 			Statement statement = connection.createStatement();
-			ResultSet result = statement.executeQuery(sql);
+			statement.execute(sql);
 		} catch (SQLException e) {
 			System.out.println("Error en update()");
 			e.printStackTrace();
 		}
-		*/
 	}
 
 	@Override
