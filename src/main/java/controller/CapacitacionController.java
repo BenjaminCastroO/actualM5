@@ -72,7 +72,7 @@ public class CapacitacionController extends HttpServlet {
 		        Date fecha = Date.valueOf(request.getParameter("fecha"));
 		        Time hora = Time.valueOf(request.getParameter("hora") + ":00");
 		        String lugar = request.getParameter("lugar");
-		        float duracion= Integer.parseInt(request.getParameter("duracion"));
+		        float duracion= Float.parseFloat(request.getParameter("duracion"));
 		        int cantidad= Integer.parseInt(request.getParameter("cantidad"));
 		        int clienteId= Integer.parseInt(request.getParameter("clienteId"));
 		        Capacitacion capacitacion = new Capacitacion(99, nombre, detalle, fecha, hora,  lugar, duracion, cantidad, clienteId);
@@ -83,8 +83,8 @@ public class CapacitacionController extends HttpServlet {
 			if (op.equals("editCapacitacion")) {
 				String nombre = request.getParameter("nombre");
 		        String detalle = request.getParameter("detalle");
-		        Date fecha = Date.valueOf(request.getParameter("fecha").toString());
-		        Time hora = Time.valueOf(request.getParameter("hora"));
+		        Date fecha = Date.valueOf(request.getParameter("fecha"));
+		        Time hora = Time.valueOf(request.getParameter("hora") + ":00");
 		        String lugar = request.getParameter("lugar");
 		        float duracion= Float.parseFloat(request.getParameter("duracion"));
 		        int cantidad= Integer.parseInt(request.getParameter("cantidad"));
