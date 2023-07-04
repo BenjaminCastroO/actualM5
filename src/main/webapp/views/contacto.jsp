@@ -23,7 +23,7 @@
 
 
    <h2>Formulario de Contacto</h2>
-    <form action="procesarFormulario" method="post">
+    <form action="contacto" method="post">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
         
@@ -38,7 +38,9 @@
         
         <br> 
         
-        <input type="submit" value="Enviar">
+        <div class="col pt-4">
+						<button id = "enviar" name= "enviar" value = "contacto" type="submit" class="btn btn-primary">Enviar</button>
+				</div>
     </form>
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>

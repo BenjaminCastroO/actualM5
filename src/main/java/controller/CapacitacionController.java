@@ -70,20 +70,21 @@ public class CapacitacionController extends HttpServlet {
 				String nombre = request.getParameter("nombre");
 		        String detalle = request.getParameter("detalle");
 		        Date fecha = Date.valueOf(request.getParameter("fecha").toString());
-		        Time hora = Time.valueOf(request.getParameter("hora").toString());
+		        Time hora = Time.valueOf(request.getParameter("hora"));
 		        String lugar = request.getParameter("lugar");
 		        int duracion= Integer.parseInt(request.getParameter("duracion"));
 		        int cantidad= Integer.parseInt(request.getParameter("cantidad"));
 		        int clienteId= Integer.parseInt(request.getParameter("clienteId"));
 		        Capacitacion capacitacion = new Capacitacion(99, nombre, detalle, fecha, hora,  lugar, duracion, cantidad, clienteId);
 		        capacitacionService.create(capacitacion);
+		        request.setAttribute("listaCapacitaciones", capacitacionService.findAll());
+				getServletContext().getRequestDispatcher("/views/capacitacionList.jsp").forward(request, response);
 			}
 			if (op.equals("editCapacitacion")) {
 				String nombre = request.getParameter("nombre");
 		        String detalle = request.getParameter("detalle");
 		        Date fecha = Date.valueOf(request.getParameter("fecha").toString());
-		        String horaString = request.getParameter("hora");
-		        Time hora = Time.valueOf(horaString);
+		        Time hora = Time.valueOf(request.getParameter("hora"));
 		        String lugar = request.getParameter("lugar");
 		        float duracion= Float.parseFloat(request.getParameter("duracion"));
 		        int cantidad= Integer.parseInt(request.getParameter("cantidad"));
@@ -91,7 +92,7 @@ public class CapacitacionController extends HttpServlet {
 		        Capacitacion capacitacion = new Capacitacion(99, nombre, detalle, fecha, hora,  lugar, duracion, cantidad, clienteId);
 		        capacitacionService.update(capacitacion);
 		        request.setAttribute("listaCapacitaciones", capacitacionService.findAll());
-				getServletContext().getRequestDispatcher("/views/usuarioAdministrativoList.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/views/capacitacionList.jsp").forward(request, response);
 			}
        
 		doGet(request, response);

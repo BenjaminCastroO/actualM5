@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import model.dto.Administrativo;
+import model.dto.Usuario;
 @WebServlet("/contacto")
 public class ContactoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,6 +33,19 @@ public class ContactoController extends HttpServlet {
 		getServletContext().getRequestDispatcher("/views/contacto.jsp").forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String op = request.getParameter("enviar");
+		if(op != null) {
+			if (op.equals("contacto")) {
+				String nombre = request.getParameter("nombre");
+		        String email = request.getParameter("email");
+		        String mensaje = request.getParameter("mensaje");
+		        System.out.println("Nombre: "+ nombre);
+		        System.out.println("E-Mail: "+ email);
+		        System.out.println("Mensaje: "+ mensaje);
+		        
+			}
 		doGet(request, response);
+	}
 	}
 }

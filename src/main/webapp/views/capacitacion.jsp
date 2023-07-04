@@ -80,7 +80,7 @@
 					<a href="${pageContext.request.contextPath}/" class="btn btn-secondary">Volver</a>
 				</div>
 				<div class="col">
-						<button type="submit" class="btn btn-primary">Guardar</button>
+						<button id = "enviar" name= "enviar" value = "capacitacion" type="submit" class="btn btn-primary">Guardar</button>
 				</div>
 			</div>	
 		</form>
