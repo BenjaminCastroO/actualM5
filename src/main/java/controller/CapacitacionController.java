@@ -8,8 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
+import java.sql.Time;
 
+import model.dto.Administrativo;
 import model.dto.Capacitacion;
+import model.dto.Usuario;
 import model.service.CapacitacionService;
 
 
@@ -41,25 +45,57 @@ public class CapacitacionController extends HttpServlet {
 			if (op.equals("create")) {
 				getServletContext().getRequestDispatcher("/views/capacitacion.jsp").forward(request, response);
 			}
+			if(op.equals("edit")) {
+				Capacitacion capacitacion = capacitacionService.findOne(Integer.parseInt(request.getParameter("id")));
+				request.setAttribute("capacitacion", capacitacion);
+				getServletContext().getRequestDispatcher("/views/capacitacionEdit.jsp").forward(request, response);	
+			}
+			if(op.equals("readOne")) {
+				Capacitacion capacitacion = capacitacionService.findOne(Integer.parseInt(request.getParameter("id")));
+				request.setAttribute("capacitacion", capacitacion);
+				getServletContext().getRequestDispatcher("/views/capacitacionRead.jsp").forward(request, response);
+		}
+		
+		
 		}
 		request.setAttribute("listaCapacitaciones", capacitacionService.findAll());
 		getServletContext().getRequestDispatcher("/views/capacitacionList.jsp").forward(request, response);
-		
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//solución al problema: para evitar que al redireccionar desde login a capacitacion se llame al post de capacitacion controller se verifica
-		// que el request tenga el parametro idcap distinto de null ya que el codigo del metodo post está reservado para el uso del formulario de creación
-		// de una capacitación.
-		/*if((Objects.isNull(request.getParameter("idcap")))) {
-			getServletContext().getRequestDispatcher("/views/capacitacion.jsp").forward(request, response);
-		}
-		*/
-        String nombre = request.getParameter("nombre");
-        String detalle = request.getParameter("detalle");
+		String op = request.getParameter("enviar");
+		if(op != null) {
+			if (op.equals("capacitacion")) {
+				String nombre = request.getParameter("nombre");
+		        String detalle = request.getParameter("detalle");
+		        Date fecha = Date.valueOf(request.getParameter("fecha").toString());
+		        Time hora = Time.valueOf(request.getParameter("hora").toString());
+		        String lugar = request.getParameter("lugar");
+		        int duracion= Integer.parseInt(request.getParameter("duracion"));
+		        int cantidad= Integer.parseInt(request.getParameter("cantidad"));
+		        int clienteId= Integer.parseInt(request.getParameter("clienteId"));
+		        Capacitacion capacitacion = new Capacitacion(99, nombre, detalle, fecha, hora,  lugar, duracion, cantidad, clienteId);
+		        capacitacionService.create(capacitacion);
+			}
+			if (op.equals("editCapacitacion")) {
+				String nombre = request.getParameter("nombre");
+		        String detalle = request.getParameter("detalle");
+		        Date fecha = Date.valueOf(request.getParameter("fecha").toString());
+		        String horaString = request.getParameter("hora");
+		        Time hora = Time.valueOf(horaString);
+		        String lugar = request.getParameter("lugar");
+		        float duracion= Float.parseFloat(request.getParameter("duracion"));
+		        int cantidad= Integer.parseInt(request.getParameter("cantidad"));
+		        int clienteId= Integer.parseInt(request.getParameter("clienteId"));
+		        Capacitacion capacitacion = new Capacitacion(99, nombre, detalle, fecha, hora,  lugar, duracion, cantidad, clienteId);
+		        capacitacionService.update(capacitacion);
+		        request.setAttribute("listaCapacitaciones", capacitacionService.findAll());
+				getServletContext().getRequestDispatcher("/views/usuarioAdministrativoList.jsp").forward(request, response);
+			}
        
 		doGet(request, response);
+	}
 	}
 
 }

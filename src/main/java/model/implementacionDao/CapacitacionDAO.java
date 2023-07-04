@@ -71,11 +71,14 @@ public class CapacitacionDAO implements ICapacitacionDAO{
 		try {
 			java.sql.Connection connection = Conexion.getConexion();
 			Statement statement = connection.createStatement();
-			String sql = "select select nombre, detalle, fecha, hora, lugar,"
+			String sql = "select id, nombre, detalle, fecha, hora, lugar,"
 					+ "duracion, cantidad, cliente_id from capacitacion"
 					+ " where id = " + id;    
 			ResultSet result = statement.executeQuery(sql);
-			c = mappingCapacitacion(result);
+			while (result.next()) {
+				c = mappingCapacitacion(result);
+			}
+			
 			} catch (SQLException e) {
 			System.out.println("Error en read(id)");
 			e.printStackTrace();
@@ -85,8 +88,8 @@ public class CapacitacionDAO implements ICapacitacionDAO{
 
 	@Override
 	public void update(Capacitacion c) {
-		/*
-		String sql = "update capacitaciones set nombre = '" + c.getNombre() + "', detalle = '" + c.getDetalle() + "' where id = " + c.getId();
+		
+		String sql = "update capacitacion set nombre = '" + c.getNombre() + "', detalle = '" + c.getDetalle() + "', fecha = '" + c.getFecha() + "', hora = '" + c.getHora() + "', lugar = '" + c.getLugar() + "', duracion = '" + c.getDuracion() + "', cantidad = '" + c.getCantidad() + "' where id = " + c.getId();
 		
 		try {
 			java.sql.Connection connection = Conexion.getConexion();
@@ -96,7 +99,7 @@ public class CapacitacionDAO implements ICapacitacionDAO{
 			System.out.println("Error en update()");
 			e.printStackTrace();
 		}
-		*/
+		
 	}
 
 	@Override

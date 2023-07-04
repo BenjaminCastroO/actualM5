@@ -46,7 +46,7 @@
 					<td><c:out value="${capacitacion.getCantidad()}"/></td>
 					<td><c:out value="${capacitacion.getClienteId()}"></c:out></td>
 					<td>
-						<a href="${pageContext.request.contextPath}/capacitacion?id=${capacitacion.getId()}&op=read"><i class="fa-solid fa-eye"></i></a>
+						<a href="${pageContext.request.contextPath}/capacitacion?id=${capacitacion.getId()}&op=readOne"><i class="fa-solid fa-eye"></i></a>
 						<a href="${pageContext.request.contextPath}/capacitacion?id=${capacitacion.getId()}&op=edit"><i class="fa-solid fa-pen-to-square"></i></a>
 						<a href="${pageContext.request.contextPath}/capacitacion?id=${capacitacion.getId()}&op=delete"><i class="fa-solid fa-trash"></i></a>
 					</td>				

@@ -78,11 +78,10 @@ ProfesionalService profesionalService = new ProfesionalService();
 				getServletContext().getRequestDispatcher("/views/usuarioClienteRead.jsp").forward(request, response);	
 			}
 			if (op.equals("readCliente")) {	
-				System.out.println("Aqui");
+				
 				request.setAttribute("listaClientes", clienteService.findAll());
-				System.out.println("Aqui2");
 				getServletContext().getRequestDispatcher("/views/usuarioClienteList.jsp").forward(request, response);
-				System.out.println("Aqui3");
+				
 				
 			}
  
@@ -103,7 +102,7 @@ ProfesionalService profesionalService = new ProfesionalService();
 			if (op.equals("readProfesional")) {		
 				request.setAttribute("listaProfesionales", profesionalService.findAll());
 				getServletContext().getRequestDispatcher("/views/usuarioProfesionalList.jsp").forward(request, response);
-				System.out.println("Aqui3");
+			
 			}
 		}
 		request.setAttribute("listaUsuarios", usuarioService.findAll());
